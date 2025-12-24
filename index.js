@@ -45,11 +45,12 @@ document.getElementById("submit").addEventListener("click",()=>{
 const rowCount = 3
 const colCount = 3
 const solveImageContainer = document.getElementById("solve-image-main-container")
+const solveText = ["traffic lights", "test2", "test3", "test4"]
+document.getElementById("solve-title-text").textContent = solveText[0]
 for (let i=0; i<3; i++) {
     for (let j=0; j<3; j++) {
         const imageContainer = document.createElement("div")
         imageContainer.classList.add("solve-image-container")
-
         const image = document.createElement("img")
         image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
         image.classList.add("solve-image")
@@ -64,13 +65,13 @@ for (let i=0; i<3; i++) {
 
 // image on click will invert highlight
 const invertHightlightImage = (image) => {
-    if(image.classlist.contains("unhighlighted")){
-        image.classlist.add("highlighted")
-        image.classlist.remove("unhighlighted")
+    if(image.classList.contains("unhighlighted")){
+        image.classList.add("highlighted")
+        image.classList.remove("unhighlighted")
     }
     else {
-        image.classlist.remove("highlighted")
-        image.classlist.add("unhighlighted")
+        image.classList.remove("highlighted")
+        image.classList.add("unhighlighted")
     }
     
 }
@@ -99,6 +100,7 @@ document.getElementById("verify").addEventListener("click",()=> {
                 solveImageContainer.appendChild(imageContainer)
             }
         }
+        document.getElementById("solve-title-text").textContent = solveText[puzzleStage - 1]
         refreshButton.style.pointerEvents = "auto"
     },1000)
 })
@@ -128,6 +130,7 @@ refreshButton.addEventListener("click",()=>{
                 solveImageContainer.appendChild(imageContainer)
             }
         }
+        document.getElementById("solve-title-text").textContent = solveText[puzzleStage - 1]
         refreshButton.style.pointerEvents = "auto"
     },1000)
    
