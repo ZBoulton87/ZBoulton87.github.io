@@ -42,7 +42,8 @@ document.getElementById("submit").addEventListener("click",()=>{
 })
 
 // fill up the solve-image-container
-const imageCount = 15
+const rowCount = 3
+const colCount = 3
 const solveImageContainer = document.getElementById("solve-image-main-container")
 for (let i=0; i<3; i++) {
     for (let j=0; j<3; j++) {
@@ -50,7 +51,7 @@ for (let i=0; i<3; i++) {
         imageContainer.classList.add("solve-image-container")
 
         const image = document.createElement("img")
-        image.setAttribute("src",`./images/img${((i*3)+j)+1}.jpg`)
+        image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
         image.classList.add("solve-image")
         image.addEventListener("click",()=>{
             refreshImage(image)
@@ -66,7 +67,7 @@ const refreshImage = (image) => {
     image.style.pointerEvents = "none"; //make it unclickable
     setTimeout(()=>{
         image.setAttribute("src","")
-        image.setAttribute("src",`./images/img${Math.floor(Math.random()*imageCount)+1}.jpg`)
+        image.setAttribute("src",`./image1/image${Math.floor(Math.random()*rowCount)+1}_${Math.floor(Math.random()*colCount)+1}.png`)
         image.classList.remove("fade-out")
         image.style.pointerEvents = "auto"; //make it clickable again
     },1000)
