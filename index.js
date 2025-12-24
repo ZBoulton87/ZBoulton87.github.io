@@ -54,23 +54,22 @@ for (let i=0; i<3; i++) {
         image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
         image.classList.add("solve-image")
         image.addEventListener("click",()=>{
-            refreshImage(image)
+            invertHightlightImage(image)
         })
         imageContainer.appendChild(image)
         solveImageContainer.appendChild(imageContainer)
     }
 }
 
-// image on click will refresh new image
-const refreshImage = (image) => {
-    image.classList.add("fade-out") //fade out animation
-    image.style.pointerEvents = "none"; //make it unclickable
-    setTimeout(()=>{
-        image.setAttribute("src","")
-        image.setAttribute("src",`./image1/image${Math.floor(Math.random()*colCount)+1}_${Math.floor(Math.random()*rowCount)+1}.png`)
-        image.classList.remove("fade-out")
-        image.style.pointerEvents = "auto"; //make it clickable again
-    },1000)
+// image on click will invert highlight
+const invertHightlightImage = (image) => {
+    if(image.style.border != "3px solid blue"){
+        image.style.border = "3px solid blue"
+    }
+    else {
+        image.style.border = "none"
+    }
+    
 }
 
 // show try again when verify is click
