@@ -74,7 +74,28 @@ const invertHightlightImage = (image) => {
 
 // show try again when verify is click
 document.getElementById("verify").addEventListener("click",()=> {
-    document.getElementById("solve-image-error-msg").style.display = "block"
+    solveImageContainer.classList.add("fade-out")
+    document.getElementById("solve-image-error-msg").style.display = "none"
+    setTimeout(()=> {
+        solveImageContainer.classList.remove("fade-out")
+        solveImageContainer.innerHTML = ""
+        for (let i=0; i<3; i++) {
+            for (let j=0; j<3; j++) {
+                const imageContainer = document.createElement("div")
+                imageContainer.classList.add("solve-image-container")
+
+                const image = document.createElement("img")
+                image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
+                image.classList.add("solve-image")
+                image.addEventListener("click",()=>{
+                    invertHightlightImage(image)
+                })
+                imageContainer.appendChild(image)
+                solveImageContainer.appendChild(imageContainer)
+            }
+        }
+        refreshButton.style.pointerEvents = "auto"
+    },1000)
 })
 
 // refresh everything when refresh is clicked
@@ -90,14 +111,13 @@ refreshButton.addEventListener("click",()=>{
             for (let j=0; j<3; j++) {
                 const imageContainer = document.createElement("div")
                 imageContainer.classList.add("solve-image-container")
-        
+
                 const image = document.createElement("img")
-                image.setAttribute("src",`./image1/image${Math.floor(Math.random()*colCount)+1}_${Math.floor(Math.random()*rowCount)+1}.jpg`)
+                image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
                 image.classList.add("solve-image")
                 image.addEventListener("click",()=>{
-                    refreshImage(image)
+                    invertHightlightImage(image)
                 })
-                
                 imageContainer.appendChild(image)
                 solveImageContainer.appendChild(imageContainer)
             }
