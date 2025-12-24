@@ -63,17 +63,19 @@ for (let i=0; i<3; i++) {
 
 // image on click will invert highlight
 const invertHightlightImage = (image) => {
-    if(image.style.border != "3px solid blue"){
-        image.style.border = "3px solid blue"
+    if(image.style.outline != "3px solid blue"){
+        image.style.outline = "3px solid blue"
     }
     else {
-        image.style.border = "none"
+        image.style.outline = "none"
     }
     
 }
 
 // show try again when verify is click
+let puzzleStage = 1
 document.getElementById("verify").addEventListener("click",()=> {
+    puzzleStage += 1
     solveImageContainer.classList.add("fade-out")
     document.getElementById("solve-image-error-msg").style.display = "none"
     setTimeout(()=> {
@@ -85,7 +87,7 @@ document.getElementById("verify").addEventListener("click",()=> {
                 imageContainer.classList.add("solve-image-container")
 
                 const image = document.createElement("img")
-                image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
+                image.setAttribute("src",`./image${puzzleStage}/image${i+1}_${j+1}.png`)
                 image.classList.add("solve-image")
                 image.addEventListener("click",()=>{
                     invertHightlightImage(image)
@@ -101,6 +103,7 @@ document.getElementById("verify").addEventListener("click",()=> {
 // refresh everything when refresh is clicked
 const refreshButton = document.getElementById("refresh")
 refreshButton.addEventListener("click",()=>{
+    puzzleStage = 1
     refreshButton.style.pointerEvents = "none"
     solveImageContainer.classList.add("fade-out")
     document.getElementById("solve-image-error-msg").style.display = "none"
