@@ -53,6 +53,7 @@ for (let i=0; i<3; i++) {
         const image = document.createElement("img")
         image.setAttribute("src",`./image1/image${i+1}_${j+1}.png`)
         image.classList.add("solve-image")
+        image.classList.add("unhighlighted")
         image.addEventListener("click",()=>{
             invertHightlightImage(image)
         })
@@ -63,16 +64,18 @@ for (let i=0; i<3; i++) {
 
 // image on click will invert highlight
 const invertHightlightImage = (image) => {
-    if(image.classlist.contains("highlighted")){
+    if(image.classlist.contains("unhighlighted")){
         image.classlist.add("highlighted")
+        image.classlist.remove("unhighlighted")
     }
     else {
         image.classlist.remove("highlighted")
+        image.classlist.add("unhighlighted")
     }
     
 }
 
-// show try again when verify is click
+// advance image when verify is click
 let puzzleStage = 1
 document.getElementById("verify").addEventListener("click",()=> {
     puzzleStage += 1
