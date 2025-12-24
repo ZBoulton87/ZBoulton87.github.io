@@ -210,6 +210,15 @@ body {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
+    outline: none;
+}
+
+.unhighlighted {
+    outline: none;
+}
+
+.highlighted {
+    outline: 5px solid blue;
 }
 
 .pad5px {
