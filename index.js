@@ -67,7 +67,7 @@ const refreshImage = (image) => {
     image.style.pointerEvents = "none"; //make it unclickable
     setTimeout(()=>{
         image.setAttribute("src","")
-        image.setAttribute("src",`./image1/image${Math.floor(Math.random()*rowCount)+1}_${Math.floor(Math.random()*colCount)+1}.png`)
+        image.setAttribute("src",`./image1/image${Math.floor(Math.random()*colCount)+1}_${Math.floor(Math.random()*rowCount)+1}.png`)
         image.classList.remove("fade-out")
         image.style.pointerEvents = "auto"; //make it clickable again
     },1000)
@@ -93,7 +93,7 @@ refreshButton.addEventListener("click",()=>{
                 imageContainer.classList.add("solve-image-container")
         
                 const image = document.createElement("img")
-                image.setAttribute("src",`./images/img${Math.floor(Math.random()*imageCount)+1}.jpg`)
+                image.setAttribute("src",`./image1/image${Math.floor(Math.random()*colCount)+1}_${Math.floor(Math.random()*rowCount)+1}.jpg`)
                 image.classList.add("solve-image")
                 image.addEventListener("click",()=>{
                     refreshImage(image)
