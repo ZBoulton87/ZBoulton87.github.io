@@ -65,13 +65,13 @@ for (let i=0; i<3; i++) {
 
 // image on click will invert highlight
 const invertHightlightImage = (image) => {
-    if(image.classList.contains("unhighlighted")){
-        image.classList.add("highlighted")
-        image.classList.remove("unhighlighted")
-    }
-    else {
+    if(image.classList.contains("highlighted")){
         image.classList.remove("highlighted")
         image.classList.add("unhighlighted")
+    }
+    else {
+        image.classList.add("highlighted")
+        image.classList.remove("unhighlighted")
     }
     
 }
