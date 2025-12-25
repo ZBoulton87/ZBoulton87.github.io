@@ -218,7 +218,7 @@ body {
 }
 
 .highlighted {
-    outline: 5px solid blue;
+    outline: 5px solid rgb(26, 115, 232);
 }
 
 .pad5px {
