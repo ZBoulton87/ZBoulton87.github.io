@@ -45,7 +45,7 @@ document.getElementById("submit").addEventListener("click",()=>{
 const rowCount = 3
 const colCount = 3
 const solveImageContainer = document.getElementById("solve-image-main-container")
-const solveText = ["traffic lights", "test2", "test3", "test4"]
+const solveText = ["traffic cones", "traffic lights", "cars", "the hidden present!"]
 document.getElementById("solve-title-text").textContent = solveText[0]
 for (let i=0; i<3; i++) {
     for (let j=0; j<3; j++) {
@@ -79,6 +79,7 @@ const invertHightlightImage = (image) => {
 // advance image when verify is click
 let puzzleStage = 1
 document.getElementById("verify").addEventListener("click",()=> {
+    if(puzzleStage < 4){
     puzzleStage += 1
     solveImageContainer.classList.add("fade-out")
     document.getElementById("solve-image-error-msg").style.display = "none"
@@ -103,6 +104,9 @@ document.getElementById("verify").addEventListener("click",()=> {
         document.getElementById("solve-title-text").textContent = solveText[puzzleStage - 1]
         refreshButton.style.pointerEvents = "auto"
     },1000)
+    } else{
+        document.getElementById("solve-subtitle-text").textContent = "Go find the"
+    }
 })
 
 // refresh everything when refresh is clicked
